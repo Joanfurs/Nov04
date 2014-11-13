@@ -39,22 +39,20 @@ class View: UIView {
 			s.drawAtPoint(point, withAttributes: attributes);
 			
 		} else {
-			
-			let b: String = "BOOOOOOM!";
-
-			let font: UIFont = UIFont.systemFontOfSize(44);
-			let foregroundColor: UIColor = UIColor.redColor();
-
-			let attributes: [NSObject: AnyObject] = [
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: foregroundColor
-			];
 		
-			let size: CGSize = b.sizeWithAttributes(attributes);
-			let x: CGFloat = bounds.origin.x  + (bounds.size.width - size.width) / 2;
-			let y: CGFloat = bounds.origin.y + (bounds.size.height - size.height) / 2;
-			let point: CGPoint = CGPointMake(x, y);
-			b.drawAtPoint(point, withAttributes: attributes);
+			let w: CGFloat = bounds.size.width;
+			let h: CGFloat = bounds.size.height;
+			
+			let image: UIImage? = UIImage(named: "rocket.png");
+			if image == nil {
+			println("could not find rocket.png");
+			return;
+			}
+
+			let point: CGPoint = CGPointMake(
+			(w - image!.size.width) / 2, (h - image!.size.height)/2);
+
+			image!.drawAtPoint(point);
 	
 		}
 		
